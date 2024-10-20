@@ -17,6 +17,12 @@ If there are related issues, please fill in the issue number.
 -->
 Issue Number: close #xxx
 
+<!--
+If this PR is followup a preivous PR, for example, fix the bug that introduced by a related PR,
+link the PR here
+-->
+Related PR: #xxx
+
 Problem Summary:
 
 ### Check List (For Committer)
