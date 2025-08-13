@@ -1,9 +1,9 @@
 #!/bin/bash
 
 REPO="apache/doris"
-AUTHORS=("vinlee19", "heguanhui", "ghkang98", "yoock", "morningman", "BePPPower", "kaka11chen", "CalvinKirs", "wuwenchi", "zy-kkk", "suxiaogang223", "hubgeter")
+AUTHORS=("XnY-wei", "vinlee19", "heguanhui", "ghkang98", "yoock", "morningman", "BePPPower", "kaka11chen", "CalvinKirs", "wuwenchi", "zy-kkk", "suxiaogang223", "hubgeter")
 
-LABELS=("dev/3.1.0-merged")
+LABELS=("dev/3.1.x")
 
 LABEL_FILTER=""
 for label in "${LABELS[@]}"; do
@@ -20,8 +20,9 @@ for author in "${AUTHORS[@]}"; do
         | select(.labels | '"$LABEL_FILTER"')
         | {
             url: .url,
-            status: (if .state == "closed" and .mergedAt != null then "merged" else .state end)
+            status: (if .state == "CLOSED" and .mergedAt != null then "MERGED" else .state end)
           }
+        | select(.status != "CLOSED")
       ] 
       | .[] 
       | "\(.status)  \(.url)"'
